@@ -1,0 +1,125 @@
+/* ===== navigation ===== */
+nav h1 {
+  top: 1em;
+  position: relative;
+}
+
+/* ===== filter results ===== */
+.filter-options {
+  text-align: center;
+  padding: 1em 0;
+  height: 100%;
+}
+
+/* ===== google map ===== */
+.static_map img{
+  width: 100vw;
+}
+
+/* ===== restaurant lists ===== */
+#restaurants-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#restaurants-list .restaurant-img {
+  min-height: 0;
+}
+
+#restaurants-list li h3 {
+  color: #252831;
+  font-family: Arial,sans-serif;
+  font-size: 14pt;
+  font-weight: 200;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+}
+
+#restaurants-list li {
+  border: unset;
+  padding: 30px 25px;
+}
+
+#restaurant-container, #reviews-container {
+  width: 45vw;
+}
+
+#reviews-container h3 {
+  color: #252831;
+  font-size: 18pt;
+  font-weight: 300;
+}
+
+#restaurant-address-and-hours {
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #fff;
+  padding: 20px 40px 30px;
+}
+
+/* ===== footer ===== */
+.inside #footer {
+  width: 100%;
+  padding: 25px 0;
+  position: relative;
+}
+
+@media (max-width: 599px) {
+  /* for phones */
+  nav h1 a {
+    margin: 1em;
+    font-size: 12px;
+  }
+}
+
+/* Breakpoints */
+
+@media (max-width: 767px) {
+  /* for tablets portrait and up */
+
+  .inside #map-container {
+    max-height: 35%;
+    width: 100%;
+    height: 40vh;
+    position: relative;
+  }
+
+  #breadcrumb {
+    width: 100%;
+  }
+
+  #restaurant-container, #reviews-container {
+    padding: 100px 20px 30px;
+    width: auto;
+  }
+
+  #reviews-container {
+    padding: 20px 20px 30px;
+  }
+
+  #restaurant-img {
+    width: 100%;
+  }
+
+  #restaurant-cuisine {
+    margin: auto;
+  }
+
+  #reviews-list li {
+    width: auto;
+    margin: 1em 0;
+  }
+}
+
+@media (min-width: 768px) {
+  /* for desktops and up */
+  .inside #map-container {
+    height: 85%;
+  }
+}
+
+@media (min-width: 1800px) {
+  /* for big desktops and up */
+}
