@@ -47,10 +47,106 @@ nav h1 {
   width: 45vw;
 }
 
+/* ===== review lists ===== */
+#base_window_layer #restaurant-container {
+  padding: 175px 40px 30px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#base_window_layer #restaurant-img {
+  width: 80%;
+}
+
+#base_window_layer #restaurant-cuisine {
+  margin: unset;
+  width: unset;
+}
+
+#base_window_layer #review-entry {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 65px;
+}
+
+#base_window_layer #review-entry label span {
+  display: block;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#base_window_layer #review-entry label input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px;
+}
+
+#base_window_layer #review-entry label select {
+  font-size: 18px;
+}
+
+#base_window_layer #review-entry label textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px;
+}
+
+#base_window_layer #review-entry div {
+  margin-bottom: 15px;
+}
+
+#base_window_layer #review-entry button {
+  color: #252831;
+  padding: 1em 1.5em;
+  background: #ffae52;
+  display: inline-block;
+  border-radius: 6px;
+  margin: 1em 0;
+  cursor: pointer;
+  font-size: 10pt;
+}
+
+#base_window_layer #review-entry button:hover {
+  color: #ffae52;
+  padding: 1em 1.5em;
+  background: #252831;
+  display: inline-block;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 10pt;
+}
+
 #reviews-container h3 {
   color: #252831;
   font-size: 18pt;
   font-weight: 300;
+}
+
+#base_window_layer #breadcrumb {
+  width: 100%;
+  padding: 10px 0 16px;
+}
+
+#reviews-container .add-review {
+  color: #252831;
+  padding: 1em 1.5em;
+  background: #ffae52;
+  display: inline-block;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+#reviews-container .add-review:hover {
+  color: #ffae52;
+  padding: 1em 1.5em;
+  background: #252831;
+  display: inline-block;
+  border-radius: 24px;
 }
 
 #restaurant-address-and-hours {

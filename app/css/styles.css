@@ -281,9 +281,9 @@ nav h1 a {
   position: relative;
   width: 85%;
 }
-#reviews-list li p {
+/* #reviews-list li p {
   margin: 0 0 10px;
-}
+} */
 #restaurant-hours td {
   color: #666;
 }
