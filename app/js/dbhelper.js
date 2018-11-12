@@ -418,6 +418,23 @@ class DBHelper {
     callback(null, {id, value: newState});
   }
 
+  static handleFavoriteClick(id, newState) {
+    const fav = document.getElementById("favorite-icon-" + id);
+    fav.onclick = null;
+
+    DBHelper.updateFavorite(id, newState, (error, resultObj) => {
+      if (error) {
+        console.log("Error updating favorite");
+        return;
+      }
+
+      const favorite = document.getElementById("favorite-icon-" + resultObj.id);
+      favorite.style.background = resultObj.value
+        ? `url("/icons/favorite.svg") no-repeat`
+        : `url("/icons/favorite-border.svg") no-repeat`;
+    });
+  }
+
   static updateCachedRestaurantReview(id, bodyObj) {
     console.log("updating cache for new review: ", bodyObj);
     // Push the review into the reviews store

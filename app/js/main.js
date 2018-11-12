@@ -158,9 +158,28 @@ createRestaurantHTML = (restaurant) => {
   image.setAttribute("alt", DBHelper.imageAltForRestaurant(restaurant));
   li.append(image);
 
+  const div = document.createElement("div");
+  div.className = "restaurant-text-area";
+  li.append(div);
+
   const name = document.createElement('h3');
   name.innerHTML = restaurant.name;
   li.append(name);
+
+  const isFavorite = (restaurant["is_favorite"] && restaurant["is_favorite"].toString() === "true") ? true : false;
+  const favoriteDiv = document.createElement("div");
+  favoriteDiv.className = "favorite-icon";
+  const favorite = document.createElement("button");
+  favorite.style.background = isFavorite
+    ? `url("/icons/favorite.svg") no-repeat`
+    : `url("icons/favorite-border.svg") no-repeat`;
+  // favorite.innerHTML = isFavorite
+  //   ? restaurant.name + " is a favorite"
+  //   : restaurant.name + " is not a favorite";
+  favorite.id = "favorite-icon-" + restaurant.id;
+  favorite.onclick = event => handleFavoriteClick(restaurant.id, !isFavorite);
+  favoriteDiv.append(favorite);
+  name.append(favoriteDiv);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
@@ -179,6 +198,16 @@ createRestaurantHTML = (restaurant) => {
 
   return li
 }
+
+const handleFavoriteClick = (id, newState) => {
+  const favorite = document.getElementById("favorite-icon-" + id);
+  const restaurant = self.restaurants.filter(r => r.id === id)[0];
+  if (!restaurant)
+    return;
+  restaurant["is_favorite"] = newState;
+  favorite.onclick = event => handleFavoriteClick(restaurant.id, !restaurant["is_favorite"]);
+  DBHelper.handleFavoriteClick(id, newState);
+};
 
 /**
  * Add markers for current restaurants to the map.
