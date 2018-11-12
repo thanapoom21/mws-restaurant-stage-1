@@ -49,18 +49,21 @@ const fetchRestaurantFromURL = callback => {
  * Create restaurant HTML and add it to the webpage
  */
 const fillRestaurantHTML = (restaurant = self.restaurant) => {
-  // const div = document.getElementById("maincontent");
-  // const isFavoriteRestaurant = (restaurant["is_favorite"] && restaurant["is_favorite"].toString() === "true") ? true : false;
-  // const favContainer = document.createElement("div");
-  // favContainer.className = "favorite-icon";
-  // const favorite = document.createElement("button");
-  // favorite.style.background = isFavoriteRestaurant
-  //   ? `url("/icons/like.svg") no-repeat`
-  //   : `url("/icons/like-2.svg") no-repeat`;
-  // favorite.id = "fav-icon-" + restaurant.id;
-  // favorite.onclick = event => handleFavoriteClick(restaurant.id, !isFavorite);
-  // favoriteDiv.append(favorite);
-  // div.append(favContainer);
+  const div = document.getElementById("restaurant-container");
+  const isFavorite = (restaurant["is_favorite"] && restaurant["is_favorite"].toString() === "true") ? true : false;
+  const favoriteDiv = document.createElement("div");
+  favoriteDiv.className = "favorite-icon";
+  const favorite = document.createElement("button");
+  favorite.style.background = isFavorite
+    ? `url("/icons/favorite.svg") no-repeat`
+    : `url("icons/favorite-border.svg") no-repeat`;
+  // favorite.innerHTML = isFavorite
+  //   ? restaurant.name + " is a favorite"
+  //   : restaurant.name + " is not a favorite";
+  favorite.id = "favorite-icon-" + restaurant.id;
+  favorite.onclick = event => handleFavoriteClick(restaurant.id, !isFavorite);
+  favoriteDiv.append(favorite);
+  div.append(favoriteDiv);
 
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
@@ -83,6 +86,13 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   // fill reviews
   DBHelper.fetchRestaurantReviewsById(restaurant.id, fillReviewsHTML);
 }
+
+const handleFavoriteClick = (id, newState) => {
+  const favorite = document.getElementById("favorite-icon-" + id);
+  self.restaurant["is_favorite"] = newState;
+  favorite.onclick = event => handleFavoriteClick(restaurant.id, !self.restaurant["is_favorite"]);
+  DBHelper.handleFavoriteClick(id, newState);
+};
 
 /**
  * Create restaurant operating hours HTML table and add it to the webpage.

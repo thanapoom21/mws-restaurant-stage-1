@@ -47,6 +47,12 @@ nav h1 {
   width: 45vw;
 }
 
+.favorite-icon button{
+  border: none;
+  height: 1em;
+  padding: 1em;
+}
+
 /* ===== review lists ===== */
 #base_window_layer #restaurant-container {
   padding: 175px 40px 30px;
