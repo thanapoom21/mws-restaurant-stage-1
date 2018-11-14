@@ -106,26 +106,20 @@ const handleFavoriteClick = (id, newState) => {
 
 const saveReview = () => {
   // Get the data points for the review
-  const name = document
-    .getElementById("reviewName")
-    .value;
-  const rating = document
-    .getElementById("reviewRating")
-    .value - 0;
-  const comment = document
-    .getElementById("reviewComment")
-    .value;
+  const reviewName = document.getElementById("reviewName").value;
+  const reviewRating = document.getElementById("reviewRating").value - 0;
+  const reviewComment = document.getElementById("reviewComment").value;
 
-  console.log("reviewName: ", name);
+  console.log("reviewName: ", reviewName);
 
-  DBHelper.saveReview(self.restaurant.id, name, rating, comment, (error, review) => {
+  DBHelper.saveReview(self.restaurant.id, reviewName, reviewRating, reviewComment, (error, review) => {
     console.log("got saveReview callback");
     if (error) {
       console.log("Error saving review")
     }
     // Update the button onclick event
-    const btn = document.getElementById("btnSaveReview");
-    btn.onclick = event => saveReview();
+    const btnSaveReview = document.getElementById("btnSaveReview");
+    btnSaveReview.onclick = event => saveReview();
 
     window.location.href = "/restaurant.html?id=" + self.restaurant.id;
   });
